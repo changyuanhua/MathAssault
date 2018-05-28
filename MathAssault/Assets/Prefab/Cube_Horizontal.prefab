@@ -23,13 +23,13 @@ GameObject:
   - component: {fileID: 65903341440342360}
   - component: {fileID: 23567331587413582}
   - component: {fileID: 54140579381617352}
-  - component: {fileID: 114098862425673256}
+  - component: {fileID: 208929488338617492}
   m_Layer: 0
   m_Name: Cube_Horizontal
-  m_TagString: Untagged
+  m_TagString: Environment
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &4116023942194082
 Transform:
@@ -37,7 +37,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1016174226099794}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -6.5, y: 1, z: 2}
   m_LocalScale: {x: 5, y: 2, z: 1}
   m_Children: []
@@ -112,16 +112,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114098862425673256
-MonoBehaviour:
+--- !u!208 &208929488338617492
+NavMeshObstacle:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1016174226099794}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03e7ab60326830c48b1c02cbad77d8a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  strick_h: {fileID: 0}
-  strick_s: {fileID: 0}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5

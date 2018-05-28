@@ -1,12 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class create_map : MonoBehaviour
 {
-
     // Use this for initialization
-    void Start()
+    void Awake()
     {
         Transform h1, h2, h3, h4, h5, h6;
         Transform s1, s2, s3, s4, s5, s6;
@@ -118,11 +118,6 @@ public class create_map : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
     private bool ptrh = false;
     private bool ptrs = false;
     private int h_x = -7;
