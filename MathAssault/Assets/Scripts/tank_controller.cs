@@ -55,7 +55,6 @@ public class tank_controller : MonoBehaviour
         if (shot_cool_down_time >= fire_delta)
         {
             is_ready_to_fire = true;
-
         }
         else
         {

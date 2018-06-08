@@ -38,6 +38,7 @@ sysinfo.txt
 
 ### VisualStudioCode ###
 .vscode/*
+.vscode
 .history
 
 ### VisualStudio ###

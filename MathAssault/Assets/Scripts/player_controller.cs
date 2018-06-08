@@ -3,22 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class character_controller : MonoBehaviour
+public class player_controller : MonoBehaviour
 {
     private void Start()
     {
         current_ammunition = maximum_ammunition;
         shot_reload_time = reload_delta;
         shot_cool_down_time = fire_delta;
+        current_life = maximum_life;
+        life_regain_time = life_regain_delta;
     }
+
     private void Update()
     {
         Shoot();
+        HealthRegain();
     }
+
     private void LateUpdate()
     {
         AmmunitionShow();
+        LifeShow();
     }
+
     private void FixedUpdate()
     {
         Move();
@@ -59,7 +66,7 @@ public class character_controller : MonoBehaviour
     private void Shoot()
     {
         ShotCoolDown();
-        AmmunitionReloadTime();
+        AmmunitionReload();
         ShotFire();
     }
 
@@ -77,14 +84,14 @@ public class character_controller : MonoBehaviour
         }
     }
 
-    private void AmmunitionReloadTime()
+    private void AmmunitionReload()
     {
-        if (!hasFullAmmunition())
+        if (!HasFullAmmunition())
         {
             if (shot_reload_time >= reload_delta)
             {
                 ++current_ammunition;
-                shot_reload_time = (hasFullAmmunition() ? reload_delta : 0.0f);
+                shot_reload_time = (HasFullAmmunition() ? reload_delta : 0.0f);
             }
             else
             {
@@ -95,9 +102,9 @@ public class character_controller : MonoBehaviour
 
     private void ShotFire()
     {
-        if (Input.GetButton("Fire1") && is_ready_to_fire && hasAmmunition())
+        if (Input.GetButton("Fire1") && is_ready_to_fire && HasAmmunition())
         {
-            if (hasFullAmmunition())
+            if (HasFullAmmunition())
             {
                 shot_reload_time = 0.0f;
             }
@@ -110,24 +117,75 @@ public class character_controller : MonoBehaviour
 
     private void AmmunitionShow()
     {
-        canvas_ammunition_count.text = current_ammunition.ToString();
-        canvas_ammunition_reload.fillAmount
+        canvas_ammunition_text.text = current_ammunition.ToString();
+        canvas_ammunition_reload_image.fillAmount
             = 1.0f - (shot_reload_time / reload_delta);
     }
 
-    private bool hasAmmunition()
+    private bool HasAmmunition()
     {
         return (current_ammunition > 0);
     }
 
-    private bool hasFullAmmunition()
+    private bool HasFullAmmunition()
     {
         return (current_ammunition >= maximum_ammunition);
+    }
+
+    private void HealthRegain()
+    {
+        if (!HasFullHealth())
+        {
+            if (life_regain_time >= life_regain_delta)
+            {
+                ++current_life;
+                life_regain_time = (HasFullHealth() ? life_regain_delta : 0.0f);
+            }
+            else
+            {
+                life_regain_time += Time.deltaTime;
+            }
+        }
+    }
+
+    public void TakingDamage(int damage)
+    {
+        if (current_life > 0)
+        {
+            current_life -= damage;
+            life_regain_time = 0.0f;
+        }
+
+        if (HasNoLife())
+        {
+
+        }
+    }
+
+    private void LifeShow()
+    {
+        canvas_life_text.text = current_life.ToString();
+        canvas_life_regain_image.fillAmount
+            = 1.0f - (life_regain_time / life_regain_delta);
+    }
+
+    public bool HasNoLife()
+    {
+        return (current_life <= 0);
+    }
+
+    public bool HasFullHealth()
+    {
+        return (current_life >= maximum_life);
     }
 
     private const float hold_still = 0.0f;
 
     public float moving_speed = 10.0f;
+    public int maximum_life = 5;
+    private int current_life;
+    public float life_regain_delta = 5.0f;
+    private float life_regain_time;
 
     public Transform shot;
     public Transform shot_spawn;
@@ -139,6 +197,8 @@ public class character_controller : MonoBehaviour
     public float reload_delta = 1.0f;
     private float shot_reload_time;
 
-    public Text canvas_ammunition_count;
-    public Image canvas_ammunition_reload;
+    public Text canvas_ammunition_text;
+    public Image canvas_ammunition_reload_image;
+    public Text canvas_life_text;
+    public Image canvas_life_regain_image;
 }

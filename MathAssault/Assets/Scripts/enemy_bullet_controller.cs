@@ -29,8 +29,10 @@ public class enemy_bullet_controller : MonoBehaviour {
             is_moving = false;
             render.enabled = false;
             Destroy(gameObject, destroy_time);
+            other.GetComponent<player_controller>().TakingDamage(damage);
         }
     }
+    public int damage = 1;
     public float speed = 20.0f;
     public float destroy_time = 1.0f;
     private Vector3 movingVector;
