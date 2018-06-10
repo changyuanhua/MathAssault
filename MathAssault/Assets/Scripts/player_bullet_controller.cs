@@ -2,22 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class player_bullet_controller : MonoBehaviour
+public class player_bullet_controller : bullet
 {
-    private void Start()
-    {
-        render = GetComponent<Renderer>();
-        movingVector = Vector3.Normalize(Vector3.forward);
-    }
-    private void FixedUpdate()
-    {
-        if (is_moving)
-        {
-            transform.Translate(movingVector * speed * Time.deltaTime);
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
+    protected override void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Environment"))
         {
@@ -32,9 +19,4 @@ public class player_bullet_controller : MonoBehaviour
             Destroy(gameObject, destroy_time);
         }
     }
-    public float speed = 20.0f;
-    public float destroy_time = 1.0f;
-    private Vector3 movingVector;
-    private bool is_moving = true;
-    private Renderer render;
 }
