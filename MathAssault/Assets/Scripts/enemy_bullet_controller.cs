@@ -17,7 +17,7 @@ public class enemy_bullet_controller : bullet
             is_moving = false;
             render.enabled = false;
             Destroy(gameObject, destroy_time);
-            other.SendMessage("TakingDamage", damage);
+            other.GetComponent<player_controller>().TakingDamage(damage);
         }
     }
 }

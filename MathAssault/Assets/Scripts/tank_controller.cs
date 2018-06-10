@@ -12,6 +12,8 @@ public class tank_controller : MonoBehaviour
         nav_mesh_agent.autoBraking = false;
 
         GotoNextPoint();
+
+        weapon = GetComponent<enemy_weapon_controller>();
     }
 
     private void Update()
@@ -20,8 +22,6 @@ public class tank_controller : MonoBehaviour
         {
             GotoNextPoint();
         }
-
-        ShotCoolDown();
     }
 
     private void GotoNextPoint()
@@ -42,27 +42,6 @@ public class tank_controller : MonoBehaviour
         }
     }
 
-    public void Shoot()
-    {
-        if (is_ready_to_fire)
-        {
-            Instantiate(shot, shot_spawn.position, shot_spawn.rotation);
-            shot_cool_down_time = 0.0f;
-        }
-    }
-    private void ShotCoolDown()
-    {
-        if (shot_cool_down_time >= fire_delta)
-        {
-            is_ready_to_fire = true;
-        }
-        else
-        {
-            is_ready_to_fire = false;
-            shot_cool_down_time += Time.deltaTime;
-        }
-    }
-
     private bool IsPathPending()
     {
         return nav_mesh_agent.pathPending;
@@ -73,16 +52,17 @@ public class tank_controller : MonoBehaviour
         return (nav_mesh_agent.remainingDistance < point_reach_allowance_range);
     }
 
+    public void Shoot()
+    {
+        weapon.ShootFire();
+    }
+
+    private enemy_weapon_controller weapon;
+
     private const float area_search_range = 10.0f;
     private const float point_reach_allowance_range = 1.0f;
 
     private NavMeshAgent nav_mesh_agent;
 
     public boundary area_boundary;
-
-    public Transform shot;
-    public Transform shot_spawn;
-    public float fire_delta = 0.25f;
-    private float shot_cool_down_time = 0.0f;
-    private bool is_ready_to_fire = true;
 }

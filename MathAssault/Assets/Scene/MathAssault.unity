@@ -2506,6 +2506,24 @@ Transform:
 GameObject:
   m_PrefabParentObject: {fileID: 100040, guid: ffaf641b210f5ea41952cf36f1379d66, type: 3}
   m_PrefabInternal: {fileID: 130233383}
+--- !u!114 &430743906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 430743905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99c150ce9ebd8dc4692e094d3048dfe9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shot: {fileID: 4075771671669396, guid: 5d1f41ece2294a2438455e25c7fafad1, type: 2}
+  shot_spawn: {fileID: 1852425704}
+  maximum_ammunition: 3
+  fire_delta: 0.25
+  reload_delta: 1
+  canvas_ammunition_text: {fileID: 869240210}
+  canvas_ammunition_reload_image: {fileID: 1786104517}
 --- !u!4 &430743907 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400040, guid: ffaf641b210f5ea41952cf36f1379d66, type: 3}
@@ -2564,13 +2582,6 @@ MonoBehaviour:
   moving_speed: 10
   maximum_life: 5
   life_regain_delta: 5
-  shot: {fileID: 4075771671669396, guid: 5d1f41ece2294a2438455e25c7fafad1, type: 2}
-  shot_spawn: {fileID: 1852425704}
-  maximum_ammunition: 3
-  fire_delta: 0.25
-  reload_delta: 1
-  canvas_ammunition_text: {fileID: 869240210}
-  canvas_ammunition_reload_image: {fileID: 1786104517}
   canvas_life_text: {fileID: 479729066}
   canvas_life_regain_image: {fileID: 1403173841}
 --- !u!1 &458393373
@@ -6198,7 +6209,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawn_object: {fileID: 4810725096646464, guid: 3e6dd398a6274714b91a19ebd8d68c46,
     type: 2}
-  spawn_number: 9
+  spawn_number: 1
   area_boundary:
     x_min: 0
     x_max: 38

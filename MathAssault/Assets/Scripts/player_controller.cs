@@ -7,22 +7,17 @@ public class player_controller : MonoBehaviour
 {
     private void Start()
     {
-        current_ammunition = maximum_ammunition;
-        shot_reload_time = reload_delta;
-        shot_cool_down_time = fire_delta;
         current_life = maximum_life;
         life_regain_time = life_regain_delta;
     }
 
     private void Update()
     {
-        Shoot();
         HealthRegain();
     }
 
     private void LateUpdate()
     {
-        AmmunitionShow();
         LifeShow();
     }
 
@@ -61,75 +56,6 @@ public class player_controller : MonoBehaviour
                               ray_cast_hit.point.z);
             transform.LookAt(look_direction);
         }
-    }
-
-    private void Shoot()
-    {
-        ShotCoolDown();
-        AmmunitionReload();
-        ShotFire();
-    }
-
-    private void ShotCoolDown()
-    {
-        if (shot_cool_down_time >= fire_delta)
-        {
-            is_ready_to_fire = true;
-
-        }
-        else
-        {
-            is_ready_to_fire = false;
-            shot_cool_down_time += Time.deltaTime;
-        }
-    }
-
-    private void AmmunitionReload()
-    {
-        if (!HasFullAmmunition())
-        {
-            if (shot_reload_time >= reload_delta)
-            {
-                ++current_ammunition;
-                shot_reload_time = (HasFullAmmunition() ? reload_delta : 0.0f);
-            }
-            else
-            {
-                shot_reload_time += Time.deltaTime;
-            }
-        }
-    }
-
-    private void ShotFire()
-    {
-        if (Input.GetButton("Fire1") && is_ready_to_fire && HasAmmunition())
-        {
-            if (HasFullAmmunition())
-            {
-                shot_reload_time = 0.0f;
-            }
-
-            Instantiate(shot, shot_spawn.position, shot_spawn.rotation);
-            shot_cool_down_time = 0.0f;
-            --current_ammunition;
-        }
-    }
-
-    private void AmmunitionShow()
-    {
-        canvas_ammunition_text.text = current_ammunition.ToString();
-        canvas_ammunition_reload_image.fillAmount
-            = 1.0f - (shot_reload_time / reload_delta);
-    }
-
-    private bool HasAmmunition()
-    {
-        return (current_ammunition > 0);
-    }
-
-    private bool HasFullAmmunition()
-    {
-        return (current_ammunition >= maximum_ammunition);
     }
 
     private void HealthRegain()
@@ -186,19 +112,6 @@ public class player_controller : MonoBehaviour
     private int current_life;
     public float life_regain_delta = 5.0f;
     private float life_regain_time;
-
-    public Transform shot;
-    public Transform shot_spawn;
-    public int maximum_ammunition = 3;
-    private int current_ammunition;
-    public float fire_delta = 0.25f;
-    private float shot_cool_down_time = 0.0f;
-    private bool is_ready_to_fire = true;
-    public float reload_delta = 1.0f;
-    private float shot_reload_time;
-
-    public Text canvas_ammunition_text;
-    public Image canvas_ammunition_reload_image;
     public Text canvas_life_text;
     public Image canvas_life_regain_image;
 }

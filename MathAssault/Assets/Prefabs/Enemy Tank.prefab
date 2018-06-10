@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 65932164553165124}
   - component: {fileID: 195105506920368114}
   - component: {fileID: 114733634556338402}
-  - component: {fileID: 64561493052805190}
+  - component: {fileID: 114754599650338642}
   m_Layer: 2
   m_Name: Enemy Tank
   m_TagString: Enemy
@@ -4606,20 +4606,6 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300002, guid: 8598fc3669c2e5f408e708dae8e01f0b, type: 3}
---- !u!64 &64561493052805190
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1019061972280704}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Convex: 1
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 8598fc3669c2e5f408e708dae8e01f0b, type: 3}
 --- !u!65 &65932164553165124
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -4661,6 +4647,17 @@ MonoBehaviour:
     x_max: 39
     z_min: -28
     z_max: 8
+--- !u!114 &114754599650338642
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1019061972280704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c0192074c93f694cb2f674179df8070, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   shot: {fileID: 4206275391702406, guid: 69bc4a2873d2f314b98bf187b2716431, type: 2}
   shot_spawn: {fileID: 4251023452072004}
   fire_delta: 0.25
