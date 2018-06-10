@@ -7,8 +7,8 @@ public class player_weapon_controller : MonoBehaviour, weapon
 {
     private void Start()
     {
-        current_ammunition = maximum_ammunition;
-        shot_reload_time = reload_delta;
+        _current_ammunition = maximum_ammunition;
+        _shot_reload_time = reload_delta;
         shot_cool_down_time = fire_delta;
     }
 
@@ -23,24 +23,18 @@ public class player_weapon_controller : MonoBehaviour, weapon
         }
     }
 
-    private void LateUpdate()
-    {
-        AmmunitionShow();
-    }
-
-
     public void AmmunitionReload()
     {
         if (!HasFullAmmunition())
         {
-            if (shot_reload_time >= reload_delta)
+            if (_shot_reload_time >= reload_delta)
             {
-                ++current_ammunition;
-                shot_reload_time = (HasFullAmmunition() ? reload_delta : 0.0f);
+                ++_current_ammunition;
+                _shot_reload_time = (HasFullAmmunition() ? reload_delta : 0.0f);
             }
             else
             {
-                shot_reload_time += Time.deltaTime;
+                _shot_reload_time += Time.deltaTime;
             }
         }
     }
@@ -51,12 +45,12 @@ public class player_weapon_controller : MonoBehaviour, weapon
         {
             if (HasFullAmmunition())
             {
-                shot_reload_time = 0.0f;
+                _shot_reload_time = 0.0f;
             }
 
             Instantiate(shot, shot_spawn.position, shot_spawn.rotation);
             shot_cool_down_time = 0.0f;
-            --current_ammunition;
+            --_current_ammunition;
         }
     }
 
@@ -76,12 +70,12 @@ public class player_weapon_controller : MonoBehaviour, weapon
 
     private bool HasAmmunition()
     {
-        return (current_ammunition > 0);
+        return (_current_ammunition > 0);
     }
 
     private bool HasFullAmmunition()
     {
-        return (current_ammunition >= maximum_ammunition);
+        return (_current_ammunition >= maximum_ammunition);
     }
 
     private bool IsShooting()
@@ -89,22 +83,16 @@ public class player_weapon_controller : MonoBehaviour, weapon
         return (Input.GetButton("Fire1"));
     }
 
-    private void AmmunitionShow()
-    {
-        canvas_ammunition_text.text = current_ammunition.ToString();
-        canvas_ammunition_reload_image.fillAmount
-            = 1.0f - (shot_reload_time / reload_delta);
-    }
-
     public Transform shot;
     public Transform shot_spawn;
     public int maximum_ammunition = 3;
-    private int current_ammunition;
+    private int _current_ammunition;
     public float fire_delta = 0.25f;
     private float shot_cool_down_time = 0.0f;
     private bool is_ready_to_fire = true;
     public float reload_delta = 1.0f;
-    private float shot_reload_time;
-    public Text canvas_ammunition_text;
-    public Image canvas_ammunition_reload_image;
+    private float _shot_reload_time;
+
+    public int current_ammunition { get { return _current_ammunition; } }
+    public float shot_reload_time { get { return _shot_reload_time; } }
 }

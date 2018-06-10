@@ -1,24 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class player_controller : MonoBehaviour
 {
     private void Start()
     {
-        current_life = maximum_life;
-        life_regain_time = life_regain_delta;
+        _current_life = maximum_life;
+        _life_regain_time = life_regain_delta;
     }
 
     private void Update()
     {
         HealthRegain();
-    }
-
-    private void LateUpdate()
-    {
-        LifeShow();
     }
 
     private void FixedUpdate()
@@ -62,24 +56,24 @@ public class player_controller : MonoBehaviour
     {
         if (!HasFullHealth())
         {
-            if (life_regain_time >= life_regain_delta)
+            if (_life_regain_time >= life_regain_delta)
             {
-                ++current_life;
-                life_regain_time = (HasFullHealth() ? life_regain_delta : 0.0f);
+                ++_current_life;
+                _life_regain_time = (HasFullHealth() ? life_regain_delta : 0.0f);
             }
             else
             {
-                life_regain_time += Time.deltaTime;
+                _life_regain_time += Time.deltaTime;
             }
         }
     }
 
     public void TakingDamage(int damage)
     {
-        if (current_life > 0)
+        if (_current_life > 0)
         {
-            current_life -= damage;
-            life_regain_time = 0.0f;
+            _current_life -= damage;
+            _life_regain_time = 0.0f;
         }
 
         if (HasNoLife())
@@ -88,30 +82,24 @@ public class player_controller : MonoBehaviour
         }
     }
 
-    private void LifeShow()
-    {
-        canvas_life_text.text = current_life.ToString();
-        canvas_life_regain_image.fillAmount
-            = 1.0f - (life_regain_time / life_regain_delta);
-    }
-
     public bool HasNoLife()
     {
-        return (current_life <= 0);
+        return (_current_life <= 0);
     }
 
     public bool HasFullHealth()
     {
-        return (current_life >= maximum_life);
+        return (_current_life >= maximum_life);
     }
 
     private const float hold_still = 0.0f;
 
     public float moving_speed = 10.0f;
     public int maximum_life = 5;
-    private int current_life;
+    private int _current_life;
     public float life_regain_delta = 5.0f;
-    private float life_regain_time;
-    public Text canvas_life_text;
-    public Image canvas_life_regain_image;
+    private float _life_regain_time;
+
+    public int current_life { get { return _current_life; } }
+    public float life_regain_time { get { return _life_regain_time; } }
 }
