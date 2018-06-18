@@ -6,5 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/MathAssault.unity
+    path: Assets/Scene/MathAssault.unity
     guid: c0312c207331930489f9f0bd99c491ac
+  - enabled: 1
+    path: Assets/Scene/Menu Scene.unity
+    guid: 4539cc69a264ec94f84e39831067cba9
