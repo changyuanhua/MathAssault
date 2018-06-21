@@ -6,26 +6,25 @@ public class math_questions
 {
     public math_questions(difficulty diff)
     {
-        range random_range;
         switch (diff)
         {
             case difficulty.Easy:
-                random_range = new range(0, 10);
+                question_range = new range(0, 10);
                 break;
             case difficulty.Normal:
-                random_range = new range(10, 20);
+                question_range = new range(10, 20);
                 break;
             case difficulty.Hard:
-                random_range = new range(20, 50);
+                question_range = new range(20, 50);
                 break;
             default:
-                random_range = new range(0, 10);
+                question_range = new range(0, 10);
                 break;
         }
         Random random = new Random();
         math_operator = RandomEnumValue<operators>();
-        first_value = random.Next(random_range.min, random_range.max);
-        second_value = random.Next(random_range.min, random_range.max);
+        first_value = random.Next(question_range.min, question_range.max);
+        second_value = random.Next(question_range.min, question_range.max);
         switch (math_operator)
         {
             case operators.Addition:
@@ -84,4 +83,5 @@ public class math_questions
     public readonly int first_value;
     public readonly int second_value;
     public readonly int answer;
+    public readonly range question_range;
 }

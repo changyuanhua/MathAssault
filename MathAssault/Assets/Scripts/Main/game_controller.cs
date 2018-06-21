@@ -42,6 +42,7 @@ public class game_controller : MonoBehaviour
 
     public void AskQuestion(Transform attacked_target)
     {
+        Debug.Log("Is asking question");
         if (!is_answering_question)
         {
             is_answering_question = true;
@@ -52,6 +53,10 @@ public class game_controller : MonoBehaviour
             target = attacked_target;
             Time.timeScale = 0.0f;
             question_asked_real_time = Time.realtimeSinceStartup;
+            Debug.Log(question.first_value.ToString() + " " +
+                      question.math_operator.ToString() + " " +
+                      question.second_value + " = " +
+                      question.answer);
         }
     }
 
@@ -91,14 +96,12 @@ public class game_controller : MonoBehaviour
             }
             else
             {
-                int fake_answer;
-                do
-                {
-                    fake_answer = Random.Range(question.answer / 2, question.answer * 2);
-                } while (fake_answer == question.answer);
+                int fake_offset = Random.Range(-question.question_range.max,
+                                               question.question_range.max);
+                fake_offset = ((fake_offset == 0) ? 1 : fake_offset);
 
                 answer_buttons[iter].GetComponentInChildren<Text>().text
-                    = fake_answer.ToString();
+                    = (question.answer + fake_offset).ToString();
             }
         }
     }
