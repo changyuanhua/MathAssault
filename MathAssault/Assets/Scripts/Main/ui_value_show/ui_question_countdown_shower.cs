@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ui_question_countdown_shower : MonoBehaviour
+public class ui_question_countdown_shower : MonoBehaviour, ui_value_shower
 {
     private void Start()
     {
@@ -17,8 +17,7 @@ public class ui_question_countdown_shower : MonoBehaviour
 
     public void ValueShow()
     {
-        canvas_timer_image.fillAmount
-            = 1.0f -
+        canvas_timer_image.fillAmount = 1.0f -
               (Time.realtimeSinceStartup - countdown.question_asked_real_time) /
               countdown.question_countdown_second;
     }

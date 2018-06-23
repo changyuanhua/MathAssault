@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ui_player_health_shower : MonoBehaviour
+public class ui_player_health_shower : MonoBehaviour, ui_value_shower
 {
     private void Start()
     {

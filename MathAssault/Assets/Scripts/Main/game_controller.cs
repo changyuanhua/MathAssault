@@ -5,12 +5,17 @@ using UnityEngine.UI;
 
 public class game_controller : MonoBehaviour
 {
-
     private void Start()
     {
         is_answering_question = false;
         shooting_canvas.enabled = true;
         question_canvas.enabled = false;
+
+        score = 0;
+        if (!player)
+        {
+            Debug.LogError("Player not found");
+        }
     }
 
     public void PlayerAnswer(bool reply, int answer = 0)
@@ -21,17 +26,20 @@ public class game_controller : MonoBehaviour
             {
                 if (question.answer == answer)
                 {
-                    Debug.Log("QUESTION: CORRECT");
+                    int get_score = (int)QuestionTimeRemain() * score_ratio;
+                    Debug.Log("question: correct (" +
+                               get_score.ToString() + ")");
                     target.GetComponent<tank_controller>().Destroy();
+                    score += get_score;
                 }
                 else
                 {
-                    Debug.Log("QUESTION: INCORRECT");
+                    Debug.Log("question: incorrect");
                 }
             }
             else
             {
-                Debug.Log("QUESTION: FAILED TO REPLY");
+                Debug.Log("question: failed to reply");
             }
             is_answering_question = false;
             SetCanvas();
@@ -108,8 +116,13 @@ public class game_controller : MonoBehaviour
 
     public bool QuestionCountDownOver()
     {
-        return (Time.realtimeSinceStartup >=
-                    question_asked_real_time + question_countdown_second);
+        return (QuestionTimeRemain() <= 0.0f);
+    }
+
+    public float QuestionTimeRemain()
+    {
+        return question_asked_real_time + question_countdown_second -
+               Time.realtimeSinceStartup;
     }
 
     private bool _is_answering_question;
@@ -117,6 +130,12 @@ public class game_controller : MonoBehaviour
     {
         get { return _is_answering_question; }
         protected set { _is_answering_question = value; }
+    }
+
+    public int test
+    {
+        get;
+        set;
     }
 
     private math_questions question;
@@ -127,8 +146,17 @@ public class game_controller : MonoBehaviour
         get { return _question_asked_real_time; }
         protected set { _question_asked_real_time = value; }
     }
+    public int score_ratio = 1;
+
+    public Transform player;
     private Transform target;
 
+    private int _score;
+    public int score
+    {
+        get { return _score; }
+        protected set { _score = value; }
+    }
 
     public Canvas shooting_canvas;
     public Canvas question_canvas;
