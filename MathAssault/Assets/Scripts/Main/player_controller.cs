@@ -78,7 +78,7 @@ public class player_controller : MonoBehaviour
 
         if (HasNoLife())
         {
-
+            game_controller.GameOver();
         }
     }
 
@@ -91,6 +91,8 @@ public class player_controller : MonoBehaviour
     {
         return (current_life >= maximum_life);
     }
+
+    public game_controller game_controller;
 
     private const float hold_still = 0.0f;
 

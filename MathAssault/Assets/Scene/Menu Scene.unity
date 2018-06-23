@@ -182,7 +182,7 @@ Prefab:
     - target: {fileID: 224228179992191824, guid: 2f16c354dec76d747b74e27bb41c8a8e,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 703.5
+      value: 701
       objectReference: {fileID: 0}
     - target: {fileID: 224228179992191824, guid: 2f16c354dec76d747b74e27bb41c8a8e,
         type: 2}
@@ -425,7 +425,7 @@ Prefab:
     - target: {fileID: 224228179992191824, guid: 2f16c354dec76d747b74e27bb41c8a8e,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 703.5
+      value: 701
       objectReference: {fileID: 0}
     - target: {fileID: 224228179992191824, guid: 2f16c354dec76d747b74e27bb41c8a8e,
         type: 2}
@@ -980,7 +980,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1370774639}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db072dab23cad1d44851e84aab366178, type: 3}
+  m_Script: {fileID: 11500000, guid: bf2d200b238509f4f8f2ab8580d53b3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: MathAssault
@@ -1633,7 +1633,7 @@ Prefab:
     - target: {fileID: 224228179992191824, guid: 2f16c354dec76d747b74e27bb41c8a8e,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 703.5
+      value: 701
       objectReference: {fileID: 0}
     - target: {fileID: 224228179992191824, guid: 2f16c354dec76d747b74e27bb41c8a8e,
         type: 2}

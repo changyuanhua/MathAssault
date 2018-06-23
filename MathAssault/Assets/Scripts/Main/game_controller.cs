@@ -10,12 +10,15 @@ public class game_controller : MonoBehaviour
         is_answering_question = false;
         shooting_canvas.enabled = true;
         question_canvas.enabled = false;
+        gameover_canvas.enabled = false;
 
         score = 0;
         if (!player)
         {
             Debug.LogError("Player not found");
         }
+
+        score_shower = gameover_canvas.GetComponent<gameover_score_shower>();
     }
 
     public void PlayerAnswer(bool reply, int answer = 0)
@@ -114,6 +117,15 @@ public class game_controller : MonoBehaviour
         }
     }
 
+    public void GameOver()
+    {
+        Time.timeScale = 0.0f;
+        shooting_canvas.enabled = false;
+        question_canvas.enabled = false;
+        gameover_canvas.enabled = true;
+        score_shower.SetScore(score);
+    }
+
     public bool QuestionCountDownOver()
     {
         return (QuestionTimeRemain() <= 0.0f);
@@ -130,12 +142,6 @@ public class game_controller : MonoBehaviour
     {
         get { return _is_answering_question; }
         protected set { _is_answering_question = value; }
-    }
-
-    public int test
-    {
-        get;
-        set;
     }
 
     private math_questions question;
@@ -157,6 +163,9 @@ public class game_controller : MonoBehaviour
         get { return _score; }
         protected set { _score = value; }
     }
+
+    public Canvas gameover_canvas;
+    private gameover_score_shower score_shower;
 
     public Canvas shooting_canvas;
     public Canvas question_canvas;
