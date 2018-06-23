@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class player_weapon_controller : MonoBehaviour, weapon
+public class player_weapon_controller : MonoBehaviour
 {
     private void Start()
     {
