@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(AudioSource))]
 public class game_controller : MonoBehaviour
 {
     private void Start()
@@ -43,15 +44,18 @@ public class game_controller : MonoBehaviour
                     Destroy(clone.gameObject, 1.5f);
 
                     spawner.Spawn();
+                    correct_sound.Play();
                 }
                 else
                 {
                     Debug.Log("question: incorrect");
+                    wrong_sound.Play();
                 }
             }
             else
             {
                 Debug.Log("question: failed to reply");
+                wrong_sound.Play();
             }
             is_answering_question = false;
             SetCanvas();
@@ -133,6 +137,7 @@ public class game_controller : MonoBehaviour
         question_canvas.enabled = false;
         gameover_canvas.enabled = true;
         score_shower.SetScore(score);
+        gameover_sound.Play();
     }
 
     public bool QuestionCountDownOver()
@@ -185,4 +190,8 @@ public class game_controller : MonoBehaviour
     public Text second_argument;
     public List<Button> answer_buttons;
     public Text score_add_shower;
+
+    public AudioSource correct_sound;
+    public AudioSource wrong_sound;
+    public AudioSource gameover_sound;
 }

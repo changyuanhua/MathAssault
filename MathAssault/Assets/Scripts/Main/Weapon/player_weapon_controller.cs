@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(AudioSource))]
 public class player_weapon_controller : MonoBehaviour
 {
     private void Start()
@@ -56,6 +57,7 @@ public class player_weapon_controller : MonoBehaviour
             shot_cool_down_time = 0.0f;
             --current_ammunition;
             shaker.Shake();
+            shoot_sound.Play();
         }
     }
 
@@ -112,4 +114,5 @@ public class player_weapon_controller : MonoBehaviour
     }
 
     public ui_shaker shaker;
+    public AudioSource shoot_sound;
 }

@@ -1,0 +1,9 @@
+Gameover.wav : TheZero - Game Over Sound - https://freesound.org/people/TheZero/sounds/368367/
+Correct.wav : LittleRainySeasons - Correct.mp3 - https://freesound.org/people/LittleRainySeasons/sounds/335908/
+Wrong.wav : themusicalnomad - negative_beeps.wav - https://freesound.org/people/themusicalnomad/sounds/253886/
+EnemyShoot.wav : pgi - Heavy weapon 002 - Single shot - https://freesound.org/people/pgi/sounds/257962/
+PlayerShoot.wav - pgi - Machine Gun 001 - single shot.ogg - https://freesound.org/people/pgi/sounds/212601/
+MultishotSkill.wav - Marregheriti - shotgun.wav - https://freesound.org/people/Marregheriti/sounds/266105/
+MenuBackground.wav - uEffects - Guitar Background Sample - https://freesound.org/people/uEffects/sounds/327575/
+MainBackground.wav - B_Sean - Boss Battle.m4a - https://freesound.org/people/B_Sean/sounds/421886/
+SkillReady.wav - pera - 3beeps.wav - https://freesound.org/people/pera/sounds/56229/

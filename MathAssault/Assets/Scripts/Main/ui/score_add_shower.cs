@@ -8,6 +8,7 @@ public class score_add_shower : MonoBehaviour
     {
         current_time = 0.0f;
         canvas_renderer = GetComponent<CanvasRenderer>();
+        Destroy(gameObject, destroy_time);
     }
     private void FixedUpdate()
     {

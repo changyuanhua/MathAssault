@@ -30,6 +30,7 @@ public class skill_multishot_weapon_controller : MonoBehaviour, skill
                 shot_reload_time = reload_delta;
                 is_ready = true;
                 shower.Ready();
+                skill_ready_sound.Play();
             }
             else
             {
@@ -55,6 +56,7 @@ public class skill_multishot_weapon_controller : MonoBehaviour, skill
             is_ready = false;
             shot_reload_time = 0.0f;
             shaker.Shake();
+            cast_sound.Play();
             Debug.Log("CastSkill: Multishot");
         }
     }
@@ -80,6 +82,9 @@ public class skill_multishot_weapon_controller : MonoBehaviour, skill
 
     public ui_shaker shaker;
     public ui_skill_multishot_shower shower;
+
+    public AudioSource cast_sound;
+    public AudioSource skill_ready_sound;
 
 
     private const float degree60 = 60.0f;
