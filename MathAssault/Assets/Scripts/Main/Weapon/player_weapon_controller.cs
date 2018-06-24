@@ -55,6 +55,7 @@ public class player_weapon_controller : MonoBehaviour
                 = controller;
             shot_cool_down_time = 0.0f;
             --current_ammunition;
+            shaker.Shake();
         }
     }
 
@@ -109,4 +110,6 @@ public class player_weapon_controller : MonoBehaviour
         get { return _shot_reload_time; }
         protected set { _shot_reload_time = value; }
     }
+
+    public ui_shaker shaker;
 }

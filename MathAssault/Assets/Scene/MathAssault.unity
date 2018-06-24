@@ -1007,6 +1007,7 @@ GameObject:
   - component: {fileID: 156068004}
   - component: {fileID: 156068003}
   - component: {fileID: 156068002}
+  - component: {fileID: 156068006}
   m_Layer: 5
   m_Name: shooting_canvas
   m_TagString: Untagged
@@ -1093,6 +1094,24 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &156068006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 156068001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6a07448ac5724e47bdcd51ea66e577f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ui_list:
+  - {fileID: 681605512}
+  - {fileID: 320665880}
+  - {fileID: 1359979935}
+  - {fileID: 2070615595}
+  shake_amplitude: 10
+  shake_speed: 500
 --- !u!1 &170034307
 GameObject:
   m_ObjectHideFlags: 0
@@ -2658,6 +2677,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 430743907}
   canvas_ammunition_reload_image: {fileID: 816678796}
+  available: {fileID: 114763102809453054, guid: 9c16cc8dc57aba9439368329d9d22ebd,
+    type: 2}
+  available_show_time: 0.1
 --- !u!1 &347661982
 GameObject:
   m_ObjectHideFlags: 0
@@ -3449,6 +3471,7 @@ MonoBehaviour:
   maximum_ammunition: 3
   fire_delta: 0.25
   reload_delta: 1
+  shaker: {fileID: 156068006}
 --- !u!4 &430743907
 Transform:
   m_ObjectHideFlags: 0
@@ -3484,7 +3507,9 @@ MonoBehaviour:
   controller: {fileID: 1007154074}
   shot: {fileID: 4075771671669396, guid: 5d1f41ece2294a2438455e25c7fafad1, type: 2}
   shot_spawn: {fileID: 1852425704}
-  reload_delta: 5
+  reload_delta: 8
+  shaker: {fileID: 156068006}
+  shower: {fileID: 320665881}
 --- !u!136 &430743909
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -8460,6 +8485,8 @@ MonoBehaviour:
   - {fileID: 913395793}
   - {fileID: 1655579311}
   - {fileID: 981473144}
+  score_add_shower: {fileID: 114299982741121294, guid: b93a73fb8108fda41ae828de63d35d46,
+    type: 2}
 --- !u!1 &1010215720
 GameObject:
   m_ObjectHideFlags: 0

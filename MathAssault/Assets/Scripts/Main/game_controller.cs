@@ -34,6 +34,12 @@ public class game_controller : MonoBehaviour
                                get_score.ToString() + ")");
                     target.GetComponent<tank_controller>().Destroy();
                     score += get_score;
+
+                    Text clone = Instantiate(score_add_shower);
+                    clone.rectTransform.SetParent(shooting_canvas.transform,
+                                                  false);
+                    clone.text = get_score.ToString();
+                    Destroy(clone.gameObject, 1.5f);
                 }
                 else
                 {
@@ -173,4 +179,5 @@ public class game_controller : MonoBehaviour
     public Text first_argument;
     public Text second_argument;
     public List<Button> answer_buttons;
+    public Text score_add_shower;
 }

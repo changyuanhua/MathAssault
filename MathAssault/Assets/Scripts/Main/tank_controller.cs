@@ -59,7 +59,9 @@ public class tank_controller : MonoBehaviour
 
     public void Destroy()
     {
-        Instantiate(boom, transform.position, transform.rotation);
+        Transform clone_boom
+            = Instantiate(boom, transform.position, transform.rotation);
+        Destroy(clone_boom.gameObject, 3.0f);
         Destroy(gameObject);
     }
 

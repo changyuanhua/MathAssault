@@ -29,6 +29,7 @@ public class skill_multishot_weapon_controller : MonoBehaviour, skill
             {
                 shot_reload_time = reload_delta;
                 is_ready = true;
+                shower.Ready();
             }
             else
             {
@@ -53,6 +54,7 @@ public class skill_multishot_weapon_controller : MonoBehaviour, skill
 
             is_ready = false;
             shot_reload_time = 0.0f;
+            shaker.Shake();
             Debug.Log("CastSkill: Multishot");
         }
     }
@@ -75,6 +77,10 @@ public class skill_multishot_weapon_controller : MonoBehaviour, skill
         get { return _shot_reload_time; }
         protected set { _shot_reload_time = value; }
     }
+
+    public ui_shaker shaker;
+    public ui_skill_multishot_shower shower;
+
 
     private const float degree60 = 60.0f;
     private const float degree30 = 30.0f;
