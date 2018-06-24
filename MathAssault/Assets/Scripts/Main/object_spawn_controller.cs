@@ -26,6 +26,11 @@ public class object_spawn_controller : MonoBehaviour
             Transform clone = Instantiate(spawn_object, hit.position, Quaternion.identity);
             clone.tag = "Enemy";
             clone.GetComponent<tank_controller>().area_boundary = area_boundary;
+
+            Transform clone_spawn_particle = Instantiate(spawn_particle,
+                                                         hit.position,
+                                                         Quaternion.identity);
+            Destroy(clone_spawn_particle.gameObject, 0.5f);
         }
         else
         {
@@ -38,4 +43,5 @@ public class object_spawn_controller : MonoBehaviour
 
     // Spawn Area Range
     public boundary area_boundary;
+    public Transform spawn_particle;
 }
