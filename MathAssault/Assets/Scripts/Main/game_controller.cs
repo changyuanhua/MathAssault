@@ -19,6 +19,7 @@ public class game_controller : MonoBehaviour
         }
 
         score_shower = gameover_canvas.GetComponent<gameover_score_shower>();
+        spawner = GetComponent<object_spawn_controller>();
     }
 
     public void PlayerAnswer(bool reply, int answer = 0)
@@ -40,6 +41,8 @@ public class game_controller : MonoBehaviour
                                                   false);
                     clone.text = get_score.ToString();
                     Destroy(clone.gameObject, 1.5f);
+
+                    spawner.Spawn();
                 }
                 else
                 {
@@ -142,6 +145,8 @@ public class game_controller : MonoBehaviour
         return question_asked_real_time + question_countdown_second -
                Time.realtimeSinceStartup;
     }
+
+    private object_spawn_controller spawner;
 
     private bool _is_answering_question;
     public bool is_answering_question
