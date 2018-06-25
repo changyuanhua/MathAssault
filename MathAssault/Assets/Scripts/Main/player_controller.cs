@@ -28,27 +28,43 @@ public class player_controller : MonoBehaviour
         float move_vertical
             = Input.GetAxis("Vertical") * moving_speed * Time.deltaTime;
 
-        Vector3 new_position
-            = new Vector3(transform.position.x + move_horizontal,
-                          transform.position.y,
-                          transform.position.z + move_vertical);
+        if (math_assault_controller.view == viewer.First)
+        {
+            transform.Translate(new Vector3(move_horizontal, 0, move_vertical));
+        }
+        else if (math_assault_controller.view == viewer.Third)
+        {
+            Vector3 new_position
+                = new Vector3(transform.position.x + move_horizontal,
+                              transform.position.y,
+                              transform.position.z + move_vertical);
 
-        transform.localPosition = new_position;
+            transform.localPosition = new_position;
+        }
     }
 
     private void LookAt()
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-        RaycastHit ray_cast_hit;
-
-        if (Physics.Raycast(ray, out ray_cast_hit, 50.0f))
+        if (math_assault_controller.view == viewer.First)
         {
-            Vector3 look_direction
-                = new Vector3(ray_cast_hit.point.x,
-                              transform.position.y,
-                              ray_cast_hit.point.z);
-            transform.LookAt(look_direction);
+            transform.Rotate(hold_still,
+                             sensitivity_x * Input.GetAxis("Mouse X"),
+                             hold_still);
+        }
+        else if (math_assault_controller.view == viewer.Third)
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            RaycastHit ray_cast_hit;
+
+            if (Physics.Raycast(ray, out ray_cast_hit, 50.0f))
+            {
+                Vector3 look_direction
+                    = new Vector3(ray_cast_hit.point.x,
+                                  transform.position.y,
+                                  ray_cast_hit.point.z);
+                transform.LookAt(look_direction);
+            }
         }
     }
 
@@ -95,6 +111,8 @@ public class player_controller : MonoBehaviour
     public game_controller game_controller;
 
     private const float hold_still = 0.0f;
+
+    public float sensitivity_x = 15.0f;
 
     public float moving_speed = 10.0f;
     public int maximum_life = 5;

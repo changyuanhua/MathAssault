@@ -6,15 +6,43 @@ public class camera_controller : MonoBehaviour
 {
     private void Start()
     {
-        following_offset = transform.position - following_object.position;
+        if (math_assault_controller.view == viewer.First)
+        {
+            transform.position = following_object.transform.position + 1.45f * Vector3.up;
+            transform.LookAt(following_object.transform.position);
+            following_offset = transform.position - following_object.position;
+        }
+        else if (math_assault_controller.view == viewer.Third)
+        {
+            following_offset = transform.position - following_object.position;
+        }
     }
 
     private void LateUpdate()
     {
-        transform.position = following_object.position + following_offset;
+        if (math_assault_controller.view == viewer.First)
+        {
+            if (!game_controller.askquestion_show)
+            {
+                transform.position = following_object.position + following_offset;
+                transform.rotation = following_object.rotation;
+            }
+        }
+        else if(math_assault_controller.view == viewer.Third)
+        {
+            transform.position = following_object.position + following_offset;
+        }
     }
 
     public Transform following_object;
 
     private Vector3 following_offset;
+
+    public float sensitivityX = 1F;
+    public float sensitivityY = 10F;
+
+    public float minimumY = -45F;
+    public float maximumY = 45F;
+
+    float rotationY = 0F;
 }

@@ -9,6 +9,7 @@ public class game_controller : MonoBehaviour
     private void Start()
     {
         is_answering_question = false;
+        askquestion_show = is_answering_question;
         shooting_canvas.enabled = true;
         question_canvas.enabled = false;
         gameover_canvas.enabled = false;
@@ -58,6 +59,7 @@ public class game_controller : MonoBehaviour
                 wrong_sound.Play();
             }
             is_answering_question = false;
+            askquestion_show = is_answering_question;
             SetCanvas();
 
             Time.timeScale = 1.0f;
@@ -70,6 +72,7 @@ public class game_controller : MonoBehaviour
         if (!is_answering_question)
         {
             is_answering_question = true;
+            askquestion_show = is_answering_question;
             question = new math_questions(math_assault_controller.level);
             SetCanvas();
             SetQuestion();
@@ -133,6 +136,7 @@ public class game_controller : MonoBehaviour
     public void GameOver()
     {
         Time.timeScale = 0.0f;
+        askquestion_show = true;
         shooting_canvas.enabled = false;
         question_canvas.enabled = false;
         gameover_canvas.enabled = true;
@@ -183,6 +187,7 @@ public class game_controller : MonoBehaviour
     public Canvas gameover_canvas;
     private gameover_score_shower score_shower;
 
+    public static bool askquestion_show;
     public Canvas shooting_canvas;
     public Canvas question_canvas;
     public Text math_operator;
