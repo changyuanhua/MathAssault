@@ -37,12 +37,4 @@ public class camera_controller : MonoBehaviour
     public Transform following_object;
 
     private Vector3 following_offset;
-
-    public float sensitivityX = 1F;
-    public float sensitivityY = 10F;
-
-    public float minimumY = -45F;
-    public float maximumY = 45F;
-
-    float rotationY = 0F;
 }
