@@ -48,7 +48,7 @@ public class skill_multishot_weapon_controller : MonoBehaviour, skill
                 Transform clone = Instantiate(shot,
                                               shot_spawn.position,
                                               shot_spawn.rotation);
-                clone.transform.Rotate(Vector3.up * (-degree60 + degree30 * i));
+                clone.transform.Rotate(Vector3.up * (-degree10 + degree5 * i));
                 clone.GetComponent<player_bullet_controller>().controller
                     = controller;
             }
@@ -87,6 +87,6 @@ public class skill_multishot_weapon_controller : MonoBehaviour, skill
     public AudioSource skill_ready_sound;
 
 
-    private const float degree60 = 60.0f;
-    private const float degree30 = 30.0f;
+    private const float degree10 = 10.0f;
+    private const float degree5 = 5.0f;
 }

@@ -177,12 +177,7 @@ public class game_controller : MonoBehaviour
     public Transform player;
     private Transform target;
 
-    private int _score;
-    public int score
-    {
-        get { return _score; }
-        protected set { _score = value; }
-    }
+    public int score;
 
     public Canvas gameover_canvas;
     private gameover_score_shower score_shower;

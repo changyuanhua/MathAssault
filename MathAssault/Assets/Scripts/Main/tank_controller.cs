@@ -59,6 +59,10 @@ public class tank_controller : MonoBehaviour
 
     public void Destroy()
     {
+        Transform ups
+            = Instantiate(powerup, transform.position, transform.rotation);
+        ups.GetComponent<random_powerup_controller>().game_controller
+            = game_controller;
         Transform clone_boom
             = Instantiate(boom, transform.position, transform.rotation);
         Destroy(clone_boom.gameObject, 3.0f);
@@ -74,4 +78,6 @@ public class tank_controller : MonoBehaviour
 
     public boundary area_boundary;
     public Transform boom;
+    public Transform powerup;
+    public Transform game_controller;
 }

@@ -4729,6 +4729,8 @@ MonoBehaviour:
     z_min: -28
     z_max: 8
   boom: {fileID: 4979879381013378, guid: 6e453fd0184ff8942bc4302cf12144cd, type: 2}
+  powerup: {fileID: 4378343660174468, guid: 2dc5d810681146147b087daae6f0c7cf, type: 2}
+  game_controller: {fileID: 0}
 --- !u!114 &114754599650338642
 MonoBehaviour:
   m_ObjectHideFlags: 1

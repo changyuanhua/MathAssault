@@ -23,9 +23,13 @@ public class object_spawn_controller : MonoBehaviour
         NavMeshHit hit;
         if (NavMesh.SamplePosition(spawn_position, out hit, 10.0f, 1))
         {
-            Transform clone = Instantiate(spawn_object, hit.position, Quaternion.identity);
+            Transform clone
+                 = Instantiate(spawn_object, hit.position, Quaternion.identity);
             clone.tag = "Enemy";
-            clone.GetComponent<tank_controller>().area_boundary = area_boundary;
+            clone.GetComponent<tank_controller>().area_boundary
+                 = area_boundary;
+            clone.GetComponent<tank_controller>().game_controller
+                 = transform;
 
             Transform clone_spawn_particle = Instantiate(spawn_particle,
                                                          hit.position,

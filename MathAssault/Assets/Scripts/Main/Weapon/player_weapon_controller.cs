@@ -32,6 +32,7 @@ public class player_weapon_controller : MonoBehaviour
             {
                 ++current_ammunition;
                 shot_reload_time = (HasFullAmmunition() ? reload_delta : 0.0f);
+                reload_sound.Play();
             }
             else
             {
@@ -115,4 +116,5 @@ public class player_weapon_controller : MonoBehaviour
 
     public ui_shaker shaker;
     public AudioSource shoot_sound;
+    public AudioSource reload_sound;
 }

@@ -76,11 +76,16 @@ public class player_controller : MonoBehaviour
             {
                 ++current_life;
                 life_regain_time = (HasFullHealth() ? life_regain_delta : 0.0f);
+                regain_health.Play();
             }
             else
             {
                 life_regain_time += Time.deltaTime;
             }
+        }
+        else
+        {
+            life_regain_time = life_regain_delta;
         }
     }
 
@@ -116,14 +121,10 @@ public class player_controller : MonoBehaviour
 
     public float moving_speed = 10.0f;
     public int maximum_life = 5;
-    private int _current_life;
-    public int current_life
-    {
-        get { return _current_life; }
-        protected set { _current_life = value; }
-    }
+    public int current_life;
 
-    public float life_regain_delta = 5.0f;
+    public float life_regain_delta = 10.0f;
+    public AudioSource regain_health;
     private float _life_regain_time;
     public float life_regain_time
     {
