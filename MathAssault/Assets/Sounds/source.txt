@@ -8,4 +8,5 @@ MenuBackground.wav - uEffects - Guitar Background Sample - https://freesound.org
 MainBackground.wav - B_Sean - Boss Battle.m4a - https://freesound.org/people/B_Sean/sounds/421886/
 SkillReady.wav - pera - 3beeps.wav - https://freesound.org/people/pera/sounds/56229/
 Reload.wav - nioczkus - 1911 Reload - https://freesound.org/people/nioczkus/sounds/396331/
-Pickup.wav - fins - energy 4- https://freesound.org/people/fins/sounds/133430/
+Pickup.wav - fins - energy 4 - https://freesound.org/people/fins/sounds/133430/
+ContinuousshotSkill.wav - SpliceSound - Winchester Rifle Cock Reload.wav - https://freesound.org/people/SpliceSound/sounds/153560/

@@ -58,10 +58,13 @@ public class skill_continuousshot_weapon_controller : MonoBehaviour, skill
         is_casting = true;
 
         float normal_reload_delta = weapon.reload_delta;
+        float normal_fire_delta = weapon.fire_delta;
         weapon.reload_delta = 0.0f;
+        weapon.fire_delta = fire_delta;
         yield return new WaitForSeconds(duration);
 
         weapon.reload_delta = normal_reload_delta;
+        weapon.fire_delta = normal_fire_delta;
         is_casting = false;
         is_ready = false;
     }
@@ -75,6 +78,7 @@ public class skill_continuousshot_weapon_controller : MonoBehaviour, skill
 
     private bool is_ready = true;
     public float reload_delta = 8.0f;
+    public float fire_delta;
 
     private float _shot_reload_time;
     public float shot_reload_time
