@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class player_controller : MonoBehaviour
 {
@@ -74,9 +75,8 @@ public class player_controller : MonoBehaviour
         {
             if (life_regain_time >= life_regain_delta)
             {
-                ++current_life;
+                GetLife(1);
                 life_regain_time = (HasFullHealth() ? life_regain_delta : 0.0f);
-                regain_health.Play();
             }
             else
             {
@@ -87,6 +87,13 @@ public class player_controller : MonoBehaviour
         {
             life_regain_time = life_regain_delta;
         }
+    }
+
+    public void GetLife(int life)
+    {
+        life_canvas.GetComponent<ui_player_health_shower>().AddLife(life);
+        current_life += life;
+        regain_health.Play();
     }
 
     public void TakingDamage(int damage)
@@ -131,4 +138,6 @@ public class player_controller : MonoBehaviour
         get { return _life_regain_time; }
         protected set { _life_regain_time = value; }
     }
+
+    public Transform life_canvas;
 }

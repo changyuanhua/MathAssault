@@ -59,25 +59,32 @@ public class tank_controller : MonoBehaviour
 
     public void Destroy()
     {
-        Transform ups
-            = Instantiate(powerup, transform.position, transform.rotation);
-        ups.GetComponent<random_powerup_controller>().game_controller
-            = game_controller;
+        float random = Random.Range(0.0f, 1.0f);
+        if (powerup_drop_rate > random)
+        {
+            Transform ups
+                = Instantiate(powerup, transform.position + Vector3.up,
+                              transform.rotation);
+            ups.GetComponent<random_powerup_controller>().game_controller_object
+                = game_controller_object;
+        }
+
         Transform clone_boom
             = Instantiate(boom, transform.position, transform.rotation);
         Destroy(clone_boom.gameObject, 3.0f);
         Destroy(gameObject);
     }
 
+    public Transform game_controller_object;
     private enemy_weapon_controller weapon;
 
     private const float area_search_range = 10.0f;
     private const float point_reach_allowance_range = 1.0f;
+    public float powerup_drop_rate;
 
     private NavMeshAgent nav_mesh_agent;
 
     public boundary area_boundary;
     public Transform boom;
     public Transform powerup;
-    public Transform game_controller;
 }

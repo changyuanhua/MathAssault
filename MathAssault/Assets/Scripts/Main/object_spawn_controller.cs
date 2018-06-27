@@ -28,7 +28,7 @@ public class object_spawn_controller : MonoBehaviour
             clone.tag = "Enemy";
             clone.GetComponent<tank_controller>().area_boundary
                  = area_boundary;
-            clone.GetComponent<tank_controller>().game_controller
+            clone.GetComponent<tank_controller>().game_controller_object
                  = transform;
 
             Transform clone_spawn_particle = Instantiate(spawn_particle,

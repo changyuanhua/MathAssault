@@ -22,9 +22,17 @@ public class ui_player_health_shower : MonoBehaviour, ui_value_shower
             = 1.0f - (health.life_regain_time / health.life_regain_delta);
     }
 
+    public void AddLife(int life)
+    {
+        Text text = Instantiate(adder_text);
+        text.text = life.ToString();
+        text.rectTransform.SetParent(transform, false);
+    }
+
     private player_controller health;
 
     public Transform player;
     public Text canvas_life_text;
     public Image canvas_life_regain_image;
+    public Text adder_text;
 }

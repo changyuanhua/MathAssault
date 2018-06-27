@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class score_add_shower : MonoBehaviour
+public class add_shower : MonoBehaviour
 {
     private void Start()
     {

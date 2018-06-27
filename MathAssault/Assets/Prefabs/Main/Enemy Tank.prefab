@@ -4630,7 +4630,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 54d64e1bc1fa3c64fa9e2aceded57359, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.3
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -4723,6 +4723,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f42c65e0fb102c41ac12586917c3509, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  game_controller_object: {fileID: 0}
+  powerup_drop_rate: 0.3
   area_boundary:
     x_min: -8
     x_max: 39
@@ -4730,7 +4732,6 @@ MonoBehaviour:
     z_max: 8
   boom: {fileID: 4979879381013378, guid: 6e453fd0184ff8942bc4302cf12144cd, type: 2}
   powerup: {fileID: 4378343660174468, guid: 2dc5d810681146147b087daae6f0c7cf, type: 2}
-  game_controller: {fileID: 0}
 --- !u!114 &114754599650338642
 MonoBehaviour:
   m_ObjectHideFlags: 1

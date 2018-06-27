@@ -17,7 +17,7 @@ public class ui_score_shower : MonoBehaviour, ui_value_shower
 
     public void ValueShow()
     {
-        canvas_score_text.text = controller.score.ToString();
+        canvas_score_text.text = controller.current_score.ToString();
     }
 
     private game_controller controller;

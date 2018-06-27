@@ -341,7 +341,7 @@ Prefab:
     - target: {fileID: 224228179992191824, guid: 2f16c354dec76d747b74e27bb41c8a8e,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 352
+      value: 598.5
       objectReference: {fileID: 0}
     - target: {fileID: 224228179992191824, guid: 2f16c354dec76d747b74e27bb41c8a8e,
         type: 2}
@@ -491,11 +491,11 @@ RectTransform:
   m_Father: {fileID: 2070117608}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -50}
-  m_SizeDelta: {x: 0, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &190923468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -504,7 +504,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 190923466}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1297475563, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: -405508275, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
@@ -514,7 +514,7 @@ MonoBehaviour:
     m_Bottom: 0
   m_ChildAlignment: 4
   m_Spacing: 10
-  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
   m_ChildControlHeight: 0
@@ -985,7 +985,7 @@ Prefab:
     - target: {fileID: 224228179992191824, guid: 2f16c354dec76d747b74e27bb41c8a8e,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 352
+      value: 388.5
       objectReference: {fileID: 0}
     - target: {fileID: 224228179992191824, guid: 2f16c354dec76d747b74e27bb41c8a8e,
         type: 2}
@@ -1640,7 +1640,7 @@ Prefab:
     - target: {fileID: 224228179992191824, guid: 2f16c354dec76d747b74e27bb41c8a8e,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 310
       objectReference: {fileID: 0}
     - target: {fileID: 224228179992191824, guid: 2f16c354dec76d747b74e27bb41c8a8e,
         type: 2}
@@ -1898,7 +1898,7 @@ Prefab:
     - target: {fileID: 224228179992191824, guid: 2f16c354dec76d747b74e27bb41c8a8e,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 703.5
       objectReference: {fileID: 0}
     - target: {fileID: 224228179992191824, guid: 2f16c354dec76d747b74e27bb41c8a8e,
         type: 2}
@@ -2035,11 +2035,11 @@ RectTransform:
   m_Father: {fileID: 1954378661}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -50}
-  m_SizeDelta: {x: 0, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1357156481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2048,7 +2048,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1357156479}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1297475563, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: -405508275, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
@@ -2058,7 +2058,7 @@ MonoBehaviour:
     m_Bottom: 0
   m_ChildAlignment: 4
   m_Spacing: 10
-  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
   m_ChildControlHeight: 0
@@ -2282,7 +2282,7 @@ Prefab:
     - target: {fileID: 224228179992191824, guid: 2f16c354dec76d747b74e27bb41c8a8e,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 913.5
       objectReference: {fileID: 0}
     - target: {fileID: 224228179992191824, guid: 2f16c354dec76d747b74e27bb41c8a8e,
         type: 2}
@@ -2441,7 +2441,7 @@ Prefab:
     - target: {fileID: 224228179992191824, guid: 2f16c354dec76d747b74e27bb41c8a8e,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 493.5
       objectReference: {fileID: 0}
     - target: {fileID: 224228179992191824, guid: 2f16c354dec76d747b74e27bb41c8a8e,
         type: 2}
@@ -2585,7 +2585,7 @@ Prefab:
     - target: {fileID: 224228179992191824, guid: 2f16c354dec76d747b74e27bb41c8a8e,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 352
+      value: 808.5
       objectReference: {fileID: 0}
     - target: {fileID: 224228179992191824, guid: 2f16c354dec76d747b74e27bb41c8a8e,
         type: 2}
@@ -2821,11 +2821,11 @@ RectTransform:
   m_Father: {fileID: 1798364561}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -50}
-  m_SizeDelta: {x: 0, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1687707862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2834,7 +2834,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1687707860}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1297475563, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: -405508275, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
@@ -2844,7 +2844,7 @@ MonoBehaviour:
     m_Bottom: 0
   m_ChildAlignment: 4
   m_Spacing: 10
-  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
   m_ChildControlHeight: 0
@@ -3093,7 +3093,7 @@ Prefab:
     - target: {fileID: 224228179992191824, guid: 2f16c354dec76d747b74e27bb41c8a8e,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 352
+      value: 1018.5
       objectReference: {fileID: 0}
     - target: {fileID: 224228179992191824, guid: 2f16c354dec76d747b74e27bb41c8a8e,
         type: 2}
@@ -3254,7 +3254,7 @@ Prefab:
     - target: {fileID: 224228179992191824, guid: 2f16c354dec76d747b74e27bb41c8a8e,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 224228179992191824, guid: 2f16c354dec76d747b74e27bb41c8a8e,
         type: 2}

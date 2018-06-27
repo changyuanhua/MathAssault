@@ -14,7 +14,7 @@ public class game_controller : MonoBehaviour
         question_canvas.enabled = false;
         gameover_canvas.enabled = false;
 
-        score = 0;
+        current_score = 0;
         if (!player)
         {
             Debug.LogError("Player not found");
@@ -22,6 +22,53 @@ public class game_controller : MonoBehaviour
 
         score_shower = gameover_canvas.GetComponent<gameover_score_shower>();
         spawner = GetComponent<object_spawn_controller>();
+    }
+
+    private void Update()
+    {
+        if (is_answering_question)
+        {
+            if (QuestionCountDownOver())
+            {
+                PlayerAnswer(false);
+            }
+        }
+        SecretKey();
+    }
+
+    public void SetCanvas()
+    {
+        shooting_canvas.enabled = !is_answering_question;
+        question_canvas.enabled = is_answering_question;
+    }
+
+    public void SetQuestion()
+    {
+        math_operator.text = question.OperatorToString();
+        first_argument.text = question.first_value.ToString();
+        second_argument.text = question.second_value.ToString();
+    }
+
+    public void SetAnswer()
+    {
+        int choose = Random.Range(0, answer_buttons.Count);
+        for (int iter = 0; iter < answer_buttons.Count; ++iter)
+        {
+            if (iter == choose)
+            {
+                answer_buttons[iter].GetComponentInChildren<Text>().text
+                    = question.answer.ToString();
+            }
+            else
+            {
+                int fake_offset = Random.Range(-question.question_range.max,
+                                               question.question_range.max);
+                fake_offset = ((fake_offset == 0) ? 1 : fake_offset);
+
+                answer_buttons[iter].GetComponentInChildren<Text>().text
+                    = (question.answer + fake_offset).ToString();
+            }
+        }
     }
 
     public void PlayerAnswer(bool reply, int answer = 0)
@@ -33,19 +80,11 @@ public class game_controller : MonoBehaviour
                 if (question.answer == answer)
                 {
                     int get_score = (int)QuestionTimeRemain() * score_ratio;
+                    GetScore(get_score);
                     Debug.Log("question: correct (" +
-                               get_score.ToString() + ")");
+                              get_score.ToString() + ")");
                     target.GetComponent<tank_controller>().Destroy();
-                    score += get_score;
-
-                    Text clone = Instantiate(score_add_shower);
-                    clone.rectTransform.SetParent(shooting_canvas.transform,
-                                                  false);
-                    clone.text = get_score.ToString();
-                    Destroy(clone.gameObject, 1.5f);
-
                     spawner.Spawn();
-                    correct_sound.Play();
                 }
                 else
                 {
@@ -87,50 +126,17 @@ public class game_controller : MonoBehaviour
         }
     }
 
-    private void Update()
+    public void GetScore(int score)
     {
-        if (is_answering_question)
-        {
-            if (QuestionCountDownOver())
-            {
-                PlayerAnswer(false);
-            }
-        }
-    }
+        current_score += score;
 
-    public void SetCanvas()
-    {
-        shooting_canvas.enabled = !is_answering_question;
-        question_canvas.enabled = is_answering_question;
-    }
+        Text clone = Instantiate(score_add_shower);
+        clone.rectTransform.SetParent(score_transform,
+                                      false);
+        clone.text = score.ToString();
+        Destroy(clone.gameObject, 1.5f);
 
-    public void SetQuestion()
-    {
-        math_operator.text = question.OperatorToString();
-        first_argument.text = question.first_value.ToString();
-        second_argument.text = question.second_value.ToString();
-    }
-
-    public void SetAnswer()
-    {
-        int choose = Random.Range(0, answer_buttons.Count);
-        for (int iter = 0; iter < answer_buttons.Count; ++iter)
-        {
-            if (iter == choose)
-            {
-                answer_buttons[iter].GetComponentInChildren<Text>().text
-                    = question.answer.ToString();
-            }
-            else
-            {
-                int fake_offset = Random.Range(-question.question_range.max,
-                                               question.question_range.max);
-                fake_offset = ((fake_offset == 0) ? 1 : fake_offset);
-
-                answer_buttons[iter].GetComponentInChildren<Text>().text
-                    = (question.answer + fake_offset).ToString();
-            }
-        }
+        correct_sound.Play();
     }
 
     public void GameOver()
@@ -140,7 +146,7 @@ public class game_controller : MonoBehaviour
         shooting_canvas.enabled = false;
         question_canvas.enabled = false;
         gameover_canvas.enabled = true;
-        score_shower.SetScore(score);
+        score_shower.SetScore(current_score);
         gameover_sound.Play();
     }
 
@@ -153,6 +159,18 @@ public class game_controller : MonoBehaviour
     {
         return question_asked_real_time + question_countdown_second -
                Time.realtimeSinceStartup;
+    }
+
+    public void SecretKey()
+    {
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            Transform clone = Instantiate(powerups,
+                                          transform.position + Vector3.up,
+                                          Quaternion.identity);
+            clone.GetComponent<random_powerup_controller>()
+            .game_controller_object = transform;
+        }
     }
 
     private object_spawn_controller spawner;
@@ -177,7 +195,7 @@ public class game_controller : MonoBehaviour
     public Transform player;
     private Transform target;
 
-    public int score;
+    public int current_score;
 
     public Canvas gameover_canvas;
     private gameover_score_shower score_shower;
@@ -185,6 +203,7 @@ public class game_controller : MonoBehaviour
     public static bool askquestion_show;
     public Canvas shooting_canvas;
     public Canvas question_canvas;
+    public Transform score_transform;
     public Text math_operator;
     public Text first_argument;
     public Text second_argument;
@@ -194,4 +213,6 @@ public class game_controller : MonoBehaviour
     public AudioSource correct_sound;
     public AudioSource wrong_sound;
     public AudioSource gameover_sound;
+
+    public Transform powerups;
 }
