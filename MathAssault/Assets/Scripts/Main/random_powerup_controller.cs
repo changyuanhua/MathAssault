@@ -31,8 +31,7 @@ public class random_powerup_controller : MonoBehaviour
                         controller.GetScore(UnityEngine.Random.Range(1, 5));
                         break;
                     case powerups.AddLife:
-                        other.GetComponent<player_controller>().current_life
-                             += 1;
+                        other.GetComponent<player_controller>().GetLife(1);
                         break;
                     case powerups.AddBullet:
                         for (int i = 0; i < 360; i += 15)
